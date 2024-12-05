@@ -14,12 +14,22 @@ function createDivs(size) {
             wideContent.appendChild(tallContent)
         }
     }
+    var elements = document.getElementsByClassName('tall')
+    for (let i = 0; i < elements.length; i++) {
+        elements[i].onmouseover = function () {
+            elements[i].style.background = 'black'
+        }
+    }
 }
 
 createDivs(100)
-var elements = document.getElementsByClassName('tall')
-for (let i = 0; i < elements.length; i++) {
-    elements[i].onmouseover = function () {
-        elements[i].style.background = 'black'
+
+
+document.getElementById('reset').onclick = function () {
+    let size = prompt("How many squares?", 16)
+    if (size >= 100) {
+        size = 100
     }
+    document.getElementById('container').innerHTML = ""
+    createDivs(size)
 }
