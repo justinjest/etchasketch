@@ -12,16 +12,24 @@ function createDivs(size) {
             tallContent.style.height = 480 / size + "px"
             tallContent.style.width = 480 / size + "px"
             wideContent.appendChild(tallContent)
+            tallContent.style.opacity = 0
         }
     }
     var elements = document.getElementsByClassName('tall')
     for (let i = 0; i < elements.length; i++) {
-        elements[i].onmouseover = function () {
-            elements[i].style.background = 'black'
+        elements[i].onmouseenter = function () {
+            elements[i].style.background = randColor()
+            let opa = parseFloat(elements[i].style.opacity) || .3
+            elements[i].style.opacity = opa + .1
+            console.log(elements[i].style.opacity)
         }
     }
 }
 
+function randColor() {
+    let color = Math.floor(Math.random() * 16777215).toString(16)
+    return "#" + color
+}
 createDivs(100)
 
 
